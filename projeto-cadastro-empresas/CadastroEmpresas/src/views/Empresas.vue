@@ -19,7 +19,7 @@
         </form>
 
         <div class="mb-4">
-            <router-link to="/consultar-empresas" class="btn btn-secondary">
+            <router-link to="/consultar-empresas" class="btn btn-success">
                 Ver listagem com todas empresas cadastradas
             </router-link>
         </div>
@@ -45,7 +45,7 @@
     async function cadastrarEmpresa() {
         try {
             if (!cnpj.value || !cnpj.value.trim()) {
-                mensagem.value = 'Por favor, informe um CNPJ v�lido.'
+                mensagem.value = 'Por favor, informe um CNPJ valido.'
                 erro.value = true
                 return
             }

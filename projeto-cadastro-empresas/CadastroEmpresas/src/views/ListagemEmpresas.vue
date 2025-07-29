@@ -11,7 +11,7 @@
                     <th>Situacao</th>
                     <th>Tipo</th>
                     <th>Abertura</th>
-                    <th>Munic�pio</th>
+                    <th>Municipio</th>
                     <th>UF</th>
                     <th>Natureza Juridica</th>
                     <th>Atividade Principal</th>
@@ -84,7 +84,6 @@
         try {
             const url = `${API_URL}/listar?page=${page.value}&pageSize=${pageSize}`
             const response = await fetchWithAuth(url)
-
             empresas.value = response.empresas || []
             totalPages.value = response.totalPages || 1
         } catch (error) {

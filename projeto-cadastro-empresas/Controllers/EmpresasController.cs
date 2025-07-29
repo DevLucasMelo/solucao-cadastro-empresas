@@ -1,9 +1,9 @@
-﻿using CadastroEmpresasApp.Data;
+﻿ using CadastroEmpresasApp.Data;
 using CadastroEmpresasApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;  
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Text.Json;
@@ -15,7 +15,7 @@ namespace CadastroEmpresasApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] 
+    [Authorize]
     public class EmpresasController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

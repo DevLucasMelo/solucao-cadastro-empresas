@@ -1,6 +1,6 @@
 ﻿export async function fetchWithAuth(url, options = {}) {
     const token = localStorage.getItem('token');
-    console.log(token)
+
     const headers = {
         ...options.headers,
         'Authorization': `Bearer ${token}`,
