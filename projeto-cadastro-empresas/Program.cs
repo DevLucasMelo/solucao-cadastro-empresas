@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -56,7 +58,23 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseDefaultFiles();
-app.UseStaticFiles(); 
+app.UseStaticFiles();
+
+app.Use(async (context, next) =>
+{
+    context.Response.OnStarting(() =>
+    {
+        if (context.Response.ContentType != null &&
+            context.Response.ContentType.Contains("text/html") &&
+            !context.Response.ContentType.Contains("charset"))
+        {
+            context.Response.ContentType += "; charset=utf-8";
+        }
+        return Task.CompletedTask;
+    });
+
+    await next();
+});
 
 app.UseCors("AllowFrontend");
 

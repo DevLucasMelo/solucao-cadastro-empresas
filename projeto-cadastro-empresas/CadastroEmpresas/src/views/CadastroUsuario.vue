@@ -15,7 +15,7 @@ async function cadastrar() {
   erro.value = null
 
   if (senha.value !== confirmarSenha.value) {
-    erro.value = 'As senhas não coincidem.'
+    erro.value = 'As senhas nï¿½o coincidem.'
     return
   }
 
@@ -29,15 +29,15 @@ async function cadastrar() {
 
     if (!res.ok) {
       const data = await res.json()
-      erro.value = data || 'Erro ao cadastrar usuário.'
+      erro.value = data || 'Erro ao cadastrar usuï¿½rio.'
       carregando.value = false
       return
     }
 
-    alert('Usuário cadastrado com sucesso! Faça login.')
+    alert('Usuï¿½rio cadastrado com sucesso! Faï¿½a login.')
     router.push('/login')
   } catch {
-    erro.value = 'Erro na conexão com o servidor.'
+    erro.value = 'Erro na conexï¿½o com o servidor.'
   } finally {
     carregando.value = false
   }

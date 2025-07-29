@@ -8,15 +8,15 @@
                     <th>Nome Empresarial</th>
                     <th>Nome Fantasia</th>
                     <th>CNPJ</th>
-                    <th>Situação</th>
+                    <th>Situacao</th>
                     <th>Tipo</th>
                     <th>Abertura</th>
-                    <th>Município</th>
+                    <th>Municï¿½pio</th>
                     <th>UF</th>
-                    <th>Natureza Jurídica</th>
+                    <th>Natureza Juridica</th>
                     <th>Atividade Principal</th>
                     <th>Logradouro</th>
-                    <th>Número</th>
+                    <th>Numero</th>
                     <th>Complemento</th>
                     <th>Bairro</th>
                     <th>CEP</th>
@@ -43,7 +43,7 @@
             </tbody>
         </table>
 
-        <nav aria-label="Paginação">
+        <nav aria-label="Paginaï¿½ï¿½o">
             <ul class="pagination justify-content-center">
                 <li class="page-item" :class="{ disabled: page === 1 }">
                     <button class="page-link" @click="mudarPagina(page - 1)" :disabled="page === 1">
@@ -62,7 +62,7 @@
                     <button class="page-link"
                             @click="mudarPagina(page + 1)"
                             :disabled="page === totalPages">
-                        Próximo
+                        Proximo
                     </button>
                 </li>
             </ul>

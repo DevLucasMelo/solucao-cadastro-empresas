@@ -32,7 +32,7 @@
             router.push('/')
 
         } catch (e) {
-            erro.value = 'Erro na conexão com o servidor.'
+            erro.value = 'Erro na conexï¿½o com o servidor.'
         } finally {
             carregando.value = false
         }

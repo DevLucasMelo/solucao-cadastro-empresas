@@ -7,7 +7,7 @@
                 <input v-model="cnpj"
                        type="text"
                        class="form-control"
-                       placeholder="Digite o CNPJ (somente números)"
+                       placeholder="Digite o CNPJ (somente numeros)"
                        required
                        aria-label="CNPJ" />
                 <button type="submit"
@@ -20,7 +20,7 @@
 
         <div class="mb-4">
             <router-link to="/consultar-empresas" class="btn btn-secondary">
-                Ver todas as empresas cadastradas
+                Ver listagem com todas empresas cadastradas
             </router-link>
         </div>
 
@@ -45,7 +45,7 @@
     async function cadastrarEmpresa() {
         try {
             if (!cnpj.value || !cnpj.value.trim()) {
-                mensagem.value = 'Por favor, informe um CNPJ válido.'
+                mensagem.value = 'Por favor, informe um CNPJ vï¿½lido.'
                 erro.value = true
                 return
             }

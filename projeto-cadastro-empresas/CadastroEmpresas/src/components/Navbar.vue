@@ -18,14 +18,14 @@
                     data-bs-target="#navbarNav"
                     aria-controls="navbarNav"
                     aria-expanded="false"
-                    aria-label="Alternar navegação">
+                    aria-label="Alternar navegaï¿½ï¿½o">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/">Home</router-link>
+                        <router-link class="nav-link" to="/"> Pagina inicial</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/empresas">Cadastrar empresas</router-link>
