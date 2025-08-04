@@ -1,26 +1,17 @@
 <script setup>
-    import { ref, computed } from 'vue'
-    import { useRouter } from 'vue-router'
-    import Navbar from './components/Navbar.vue' 
+import { useAuth } from './composables/useAuth.js'
+import { useRouter } from 'vue-router'
+import Navbar from './components/Navbar.vue'
 
-    const router = useRouter()
-    const token = ref(localStorage.getItem('token'))
-
-    function logout() {
-        localStorage.removeItem('token')
-        token.value = null
-        router.push('/login')
-    }
-
-    const estaLogado = computed(() => !!token.value)
+const router = useRouter()
+const { estaLogado, logoutUser } = useAuth()
 </script>
 
 <template>
-    <div>
-        <Navbar :estaLogado="estaLogado" :logout="logout" />
-
-        <main>
-            <router-view />
-        </main>
-    </div>
+  <div>
+    <Navbar :estaLogado="estaLogado" :logout="logoutUser" />
+    <main>
+      <router-view />
+    </main>
+  </div>
 </template>
