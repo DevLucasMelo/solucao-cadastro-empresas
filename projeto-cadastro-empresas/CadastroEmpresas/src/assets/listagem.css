@@ -1,0 +1,11 @@
+table.custom-striped {
+    --bs-table-striped-bg: #c9e0ff;
+    --bs-table-striped-color: #000;
+}
+
+.custom-striped td,
+.custom-striped th {
+    font-size: 0.85rem;
+}
+
+

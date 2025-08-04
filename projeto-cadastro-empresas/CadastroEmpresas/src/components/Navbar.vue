@@ -1,79 +1,61 @@
 <script setup>
-    import { defineProps } from 'vue'
+import { defineProps } from 'vue'
 
-    const props = defineProps({
-        estaLogado: Boolean,
-        logout: Function
-    })
+const props = defineProps({
+  estaLogado: Boolean,
+  logout: Function
+})
 </script>
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-    <div class="container d-flex align-items-center justify-content-between">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between flex-wrap">
 
-      <!-- Marca (logo + texto) alinhada à esquerda -->
-      <router-link class="navbar-brand d-flex align-items-center" to="/">
+      <router-link
+        to="/"
+        class="d-flex align-items-center me-3 flex-shrink-0"
+        style="text-decoration: none; color: inherit; z-index: 2;"
+      >
         <img src="/empresa.svg" alt="Logo" style="height: 50px; margin-right: 8px;" />
         <strong>Cadastro de Empresas</strong>
       </router-link>
 
-      <!-- Botão toggler do menu (para mobile) -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Alternar navegação"
+      <ul
+        class="navbar-nav d-flex flex-row flex-wrap justify-content-center mb-0"
+        style="position: absolute; left: 0; right: 0; margin: 0 auto; width: 100%; z-index: 1;"
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <li class="nav-item px-2">
+          <router-link class="nav-link" to="/">Página inicial</router-link>
+        </li>
+        <li class="nav-item px-2">
+          <router-link class="nav-link" to="/empresas">Cadastrar empresas</router-link>
+        </li>
+        <li class="nav-item px-2">
+          <router-link class="nav-link" to="/consultar-empresas">Consultar empresas</router-link>
+        </li>
+      </ul>
 
-      <!-- Menu colapsável -->
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="d-flex align-items-center flex-shrink-0" style="z-index: 2;">
+        <router-link
+          v-if="!props.estaLogado"
+          class="btn btn-outline-secondary me-2"
+          to="/cadastro"
+        >
+          Cadastrar Usuário
+        </router-link>
 
-        <!-- Itens do menu alinhados à esquerda dentro do collapse -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/">Pagina inicial</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/empresas">Cadastrar empresas</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/consultar-empresas">Consultar empresas</router-link>
-          </li>
-        </ul>
+        <router-link v-if="!props.estaLogado" class="btn btn-outline-primar me-2" to="/login"> Login
+        </router-link>
 
-        <!-- Botões (login/logout) alinhados à direita -->
-        <div class="d-flex">
-          <router-link
-            v-if="!props.estaLogado"
-            class="btn btn-outline-secondary me-2"
-            to="/cadastro"
-          >
-            Cadastrar Usuario
-          </router-link>
-
-          <router-link
-            v-if="!props.estaLogado"
-            class="btn btn-outline-primary me-2"
-            to="/login"
-          >
-            Login
-          </router-link>
-
-          <button
-            v-else
-            class="btn btn-outline-danger"
-            @click="props.logout"
-          >
-            Logout
-          </button>
-        </div>
-
+        <button
+          v-else
+          class="btn btn-outline-danger"
+          @click="props.logout"
+        >
+          Logout
+        </button>
       </div>
+
     </div>
   </nav>
 </template>

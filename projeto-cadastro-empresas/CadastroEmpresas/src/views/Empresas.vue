@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-4">
-        <h1 class="mb-4">Empresas</h1>
+        <h1 class="mb-4">Cadastrar Empresa</h1>
 
         <form @submit.prevent="cadastrarEmpresa" class="mb-4">
             <div class="input-group">
@@ -44,6 +44,7 @@
 
     async function cadastrarEmpresa() {
         try {
+
             if (!cnpj.value || !cnpj.value.trim()) {
                 mensagem.value = 'Por favor, informe um CNPJ valido.'
                 erro.value = true
@@ -55,12 +56,13 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ cnpj: cnpj.value.trim() }),
             })
+            
+            if (response && response.message) {
+                mensagem.value = response.message
 
-            if (!response.ok && response.json) {
-                const data = await response.json()
-                mensagem.value = data.message || 'Erro ao cadastrar empresa.'
-                erro.value = true
-                return
+                erro.value = response.message.toLowerCase().includes('inválido') || response.message.toLowerCase().includes('erro')
+                
+                if (erro.value) return
             }
 
             mensagem.value = 'Empresa cadastrada com sucesso.'
