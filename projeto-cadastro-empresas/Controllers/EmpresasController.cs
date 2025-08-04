@@ -38,19 +38,19 @@ namespace CadastroEmpresasApp.Controllers
             var url = $"https://www.receitaws.com.br/v1/cnpj/{dto.Cnpj}";
             var response = await client.GetAsync(url);
             if (!response.IsSuccessStatusCode)
-                return BadRequest("Erro ao consultar a ReceitaWS");
+                return BadRequest(new { message = "Erro ao consultar a ReceitaWS" });
 
             var json = await response.Content.ReadAsStringAsync();
             var receitaResponse = JsonSerializer.Deserialize<ReceitaWsResponse>(json);
 
             if (receitaResponse.Status == "ERROR")
-                return BadRequest("CNPJ inválido ou não encontrado");
+                return BadRequest(new { message = "CNPJ inválido ou não encontrado"});
 
             var cnpj = receitaResponse.Cnpj?.Replace(".", "").Replace("/", "").Replace("-", "").Trim();
 
             bool jaExiste = await _context.Empresas.AnyAsync(e => e.emp_cnpj == cnpj && e.emp_usu_id.ToString() == usuId);
             if (jaExiste)
-                return BadRequest("Empresa já cadastrada.");
+                return BadRequest(new { message = "CNPJ já está cadastrado"});
 
             var empresa = new Empresa
             {
